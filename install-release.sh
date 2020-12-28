@@ -10,6 +10,9 @@ case "$(arch -s)" in
     'amd64' | 'x86_64')
         BIT='64'
         ;;
+    'aarch64')
+        BIT='arm64-v8a'
+        ;;
     *)
         echo "error: The architecture is not supported."
         exit 1
@@ -18,7 +21,7 @@ esac
 
 TMP_DIRECTORY="$(mktemp -d)/"
 ZIP_FILE="${TMP_DIRECTORY}v2ray-linux-$BIT.zip"
-DOWNLOAD_LINK="https://github.com/v2ray/v2ray-core/releases/latest/download/v2ray-linux-$BIT.zip"
+DOWNLOAD_LINK="https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-$BIT.zip"
 
 install_software() {
     if [[ -n "$(command -v curl)" ]]; then
