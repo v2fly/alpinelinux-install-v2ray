@@ -53,7 +53,7 @@ case "$(arch -s)" in
 esac
 
 TMP_DIRECTORY="$(mktemp -d)/"
-ZIP_FILE="${TMP_DIRECTORY}v2ray-linux-$BIT.zip"
+ZIP_FILE="${TMP_DIRECTORY}v2ray-linux-$MACHINE.zip"
 DOWNLOAD_LINK="https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-$MACHINE.zip"
 
 install_software() {
