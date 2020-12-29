@@ -87,7 +87,7 @@ download_v2ray() {
 verification_v2ray() {
     for LISTSUM in 'md5' 'sha1' 'sha256' 'sha512'; do
         SUM="$(${LISTSUM}sum $ZIP_FILE | sed 's/ .*//')"
-        CHECKSUM="$(grep $(echo $LISTSUM | tr [:lower:] [:upper:]) $ZIP_FILE.dgst | sed 's/.* //')"
+        CHECKSUM="$(grep $(echo $LISTSUM | tr [:lower:] [:upper:]) $ZIP_FILE.dgst | uniq | sed 's/.* //')"
         if [ "$SUM" != "$CHECKSUM" ]; then
             echo 'error: Check failed! Please check your network or try again.'
             exit 1
