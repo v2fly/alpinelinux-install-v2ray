@@ -87,8 +87,8 @@ download_v2ray() {
 }
 
 verification_v2ray() {
-    for LISTSUM in 'md5' 'sha1' 'sha256' 'sha512'; do
-        SUM="$(${LISTSUM}sum $ZIP_FILE | sed 's/ .*//')"
+    for LISTSUM in 'md5' 'sha1' 'sha2-256' 'sha2-512'; do
+        SUM="$(${LISTSUM//sha2-/sha}sum $ZIP_FILE | sed 's/ .*//')"
         CHECKSUM="$(grep $(echo $LISTSUM | tr [:lower:] [:upper:]) $ZIP_FILE.dgst | uniq | sed 's/.* //')"
         if [ "$SUM" != "$CHECKSUM" ]; then
             echo 'error: Check failed! Please check your network or try again.'
@@ -111,7 +111,6 @@ is_it_running() {
 
 install_v2ray() {
     install -m 755 "${TMP_DIRECTORY}v2ray" "/usr/local/bin/v2ray"
-    install -m 755 "${TMP_DIRECTORY}v2ctl" "/usr/local/bin/v2ctl"
     install -d /usr/local/lib/v2ray/
     install -m 755 "${TMP_DIRECTORY}geoip.dat" "/usr/local/lib/v2ray/geoip.dat"
     install -m 755 "${TMP_DIRECTORY}geosite.dat" "/usr/local/lib/v2ray/geosite.dat"
