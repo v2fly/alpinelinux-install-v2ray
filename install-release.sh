@@ -141,7 +141,7 @@ install_startup_service_file() {
     OPENRC='0'
     if [ ! -f '/etc/init.d/v2ray' ]; then
         mkdir "${TMP_DIRECTORY}init.d/"
-        curl -o "${TMP_DIRECTORY}init.d/v2ray" https://raw.githubusercontent.workers.dev/v2fly/alpinelinux-install-v2ray/master/init.d/v2ray -s
+        curl -o "${TMP_DIRECTORY}init.d/v2ray" https://raw.githubusercontent.com/v2fly/alpinelinux-install-v2ray/master/init.d/v2ray -s
         if [ "$?" -ne '0' ]; then
             echo 'error: Failed to start service file download! Please check your network or try again.'
             exit 1
